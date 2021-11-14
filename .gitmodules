@@ -1,0 +1,3 @@
+[submodule "neorv32-pac"]
+	path = neorv32-pac
+	url = git@github.com:cruzgarcia/neorv32-pac.git

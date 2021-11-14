@@ -1,0 +1,18 @@
+[package]
+name = "neorv32-rust"
+version = "0.1.0"
+authors = ["Cruz Garcia <cruzgarcia@posteo.de>"]
+edition = "2021"
+
+[dependencies]
+neorv32-pac = { path = "neorv32-pac" }
+riscv-rt  = "0.7.0"
+panic-halt = "0.2"
+
+[profile.release]
+debug = true
+
+# Improve code generation
+lto = true
+codegen-units = 1
+

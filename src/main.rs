@@ -7,11 +7,11 @@ use neorv32_pac;
 use riscv_rt::entry;
 
 //mod timer;
-mod leds;
+mod gpio;
 mod print;
 
 //use timer::Timer;
-use leds::Leds;
+use gpio::Gpio;
 
 const SYSTEM_CLOCK_FREQUENCY: u32 = 48_000_000;
 
@@ -20,15 +20,23 @@ const SYSTEM_CLOCK_FREQUENCY: u32 = 48_000_000;
 #[entry]
 fn main() -> ! {
     let peripherals = neorv32_pac::Peripherals::take().unwrap();
-
     //let mut timer = Timer::new(peripherals.TIMER0);
-    let mut leds = Leds::new(peripherals.LEDS);
-    leds.set_single(false, false, false, false, false, false, false);
-    //print::print_hardware::set_hardware(peripherals.UART);
-    
+    let mut gpio = Gpio::new(peripherals.GPIO);
+    gpio.set(0);
+    print::print_hardware::set_hardware(peripherals.UART);
+
     loop {
-        //print!("a");
-        leds.toggle();
+        
+        gpio.toggle();
+        print!("Hello world!\n");
+
+        
+        let mut i = 0;
+        while i < 1000000 {
+        //while i < 10000 {
+            i = i + 1;
+        }
+        
         //msleep(&mut timer, 160);
     }
     

@@ -5,14 +5,17 @@ pub struct Uart {
 }
 
 impl Uart {
+
     pub fn putc(&self, c: u8) {
+
         match self.registers.as_ref() {
             Some(reg) => unsafe {
-                // Wait until TXFULL is `0`
-                while reg.ctrl.read().bits() != 0 {
+                // Chec FIFO full
+                while reg.ctrl.read().tx_full().bit() == true {
                     ()
                 }
-                reg.rxtx_data.write(|w| w.rxtx_data().bits(c));
+                // Write data
+                reg.rxtx_data.write(|w| w.rxtx_data().bits(c) );
             },
             None => ()
         }
@@ -32,14 +35,22 @@ impl Write for Uart {
 #[macro_use]
 #[cfg(not(test))]
 pub mod print_hardware {
+
     use crate::print::*;
+
     pub static mut SUPERVISOR_UART: Uart = Uart {
         registers: None,
     };
 
     pub fn set_hardware(uart: UART) {
+        let baud : u16  = 0x4E1;
         unsafe {
             SUPERVISOR_UART.registers = Some(uart);
+            // Config
+            //SUPERVISOR_UART.registers.as_ref().unwrap().ctrl.write(|w| w.baud().bits(baud));
+            //SUPERVISOR_UART.registers.as_ref().unwrap().ctrl.write(|w| w.rts_en().bit(false));
+            //SUPERVISOR_UART.registers.as_ref().unwrap().ctrl.write(|w| w.cts_en().bit(false));
+            //SUPERVISOR_UART.registers.as_ref().unwrap().ctrl.write(|w| w.en().bit(true));
         }
     }
 

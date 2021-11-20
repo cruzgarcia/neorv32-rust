@@ -1,6 +1,7 @@
  # Sourcing NEORV32
  # Run this in /media/labshd/Projects/neorv32_rust
 #. neorv32
+cargo build
 
 riscv32-unknown-elf-objdump -d -S -z target/riscv32i-unknown-none-elf/debug/neorv32-rust > exec/neorv32-rust.asm
 riscv32-unknown-elf-objcopy -I elf32-little target/riscv32i-unknown-none-elf/debug/neorv32-rust -j .text -O binary exec/text.bin

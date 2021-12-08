@@ -6,7 +6,13 @@ Compiling and running an embedded Rust application for the NEORV32 RISC-V soft c
 Current development is based on the [Arduino MKR Vidor 4000 FPGA Board](https://store.arduino.cc/products/arduino-mkr-vidor-4000)
 # Building
 
-First of all, source the NEORV32 RISCV tools. If in doubt, check the [NEORV32 Software Toolchain Setup](https://stnolting.github.io/neorv32/ug/#_software_toolchain_setup).
+Update the submodules
+
+    cd neorv32-rust
+    git submodule init
+    git submodule update
+
+Source the NEORV32 RISCV tools. If in doubt, check the [NEORV32 Software Toolchain Setup](https://stnolting.github.io/neorv32/ug/#_software_toolchain_setup).
 
 In order to generate the image that is downloaded by UART, the image_bin binary needs to be compiled first. 
 Simplest way currently is compiling a software example:

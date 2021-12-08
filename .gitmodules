@@ -7,3 +7,6 @@
 [submodule "submodules/neorv32-mkr-vidor-4000"]
 	path = submodules/neorv32-mkr-vidor-4000
 	url = git@github.com:cruzgarcia/neorv32-mkr-vidor-4000.git
+[submodule "submodules/neorv32-pac"]
+	path = submodules/neorv32-pac
+	url = git@github.com:cruzgarcia/neorv32-pac.git

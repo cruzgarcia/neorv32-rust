@@ -1,11 +1,11 @@
 [package]
 name = "neorv32-rust"
-version = "0.1.0"
+version = "0.0.1"
 authors = ["Cruz Garcia <cruzgarcia@posteo.de>"]
 edition = "2021"
 
 [dependencies]
-neorv32-pac = { path = "neorv32-pac" }
+neorv32-pac = { path = "submodules/neorv32-pac" }
 riscv-rt  = "0.7.0"
 panic-halt = "0.2"
 

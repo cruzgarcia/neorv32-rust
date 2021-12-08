@@ -10,7 +10,7 @@ impl Uart {
 
         match self.registers.as_ref() {
             Some(reg) => unsafe {
-                // Chec FIFO full
+                // Check FIFO full
                 while reg.ctrl.read().tx_full().bit() == true {
                     ()
                 }
@@ -43,7 +43,7 @@ pub mod print_hardware {
     };
 
     pub fn set_hardware(uart: UART) {
-        let baud : u16  = 0x4E1;
+        //let baud : u16  = 0x4E1;
         unsafe {
             SUPERVISOR_UART.registers = Some(uart);
             // Config

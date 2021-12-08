@@ -35,7 +35,7 @@ fn main() -> ! {
         while i < 1000000 {
             i = i + 1;
         }
-        print!("Count: {}\n", cnt);
+        //print!("Count: {}\n", cnt);
         //msleep(&mut timer, 160);
         cnt = cnt + 1;
     }
